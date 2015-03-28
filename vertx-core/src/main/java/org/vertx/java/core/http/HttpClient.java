@@ -58,6 +58,16 @@ public interface HttpClient extends ClientSSLSupport<HttpClient>, TCPSupport<Htt
   int getMaxPoolSize();
 
   /**
+   * Returns the number of available connections in the pool
+   */
+  int getAvailableConnectionCount();
+
+  /**
+   * Returns the number of connections in use in the pool
+   */
+  int getCurrentConnectionCount();
+
+  /**
    * Set the maximum waiter queue size<p>
    * The client will keep up to {@code maxWaiterQueueSize} requests in an internal waiting queue<p>
    * @return A reference to this, so multiple invocations can be chained together.

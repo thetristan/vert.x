@@ -29,6 +29,10 @@ public interface HttpPool {
 
   int getMaxWaiterQueueSize();
 
+  int getAvailableConnectionCount();
+
+  int getCurrentConnectionCount();
+
   void close();
 
   void getConnection(Handler<ClientConnection> handler, Handler<Throwable> connectionExceptionHandler, DefaultContext context);

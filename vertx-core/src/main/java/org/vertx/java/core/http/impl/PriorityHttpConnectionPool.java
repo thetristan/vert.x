@@ -68,6 +68,16 @@ public abstract class PriorityHttpConnectionPool implements HttpPool {
     return maxWaiterQueueSize;
   }
 
+  @Override
+  public int getAvailableConnectionCount() {
+    return available.size();
+  }
+
+  @Override
+  public int getCurrentConnectionCount() {
+    return connectionCount;
+  }
+
   public synchronized void report() {
     log.trace("available: " + available.size() + " connection count: " + connectionCount + " waiters: " + waiters.size());
   }
