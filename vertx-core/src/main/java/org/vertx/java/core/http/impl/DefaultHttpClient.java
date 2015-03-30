@@ -123,6 +123,23 @@ public class DefaultHttpClient implements HttpClient {
   }
 
   @Override
+  public int getAvailableConnectionCount() {
+    checkClosed();
+    return pool.getAvailableConnectionCount();
+  }
+
+  @Override
+  public int getCurrentConnectionCount() {
+    checkClosed();
+    return pool.getCurrentConnectionCount();
+  }
+
+  @Override
+  public int getCurrentWaiterCount() {
+    return pool.getCurrentWaiterCount();
+  }
+
+  @Override
   public DefaultHttpClient setKeepAlive(boolean keepAlive) {
     checkClosed();
     checkConfigurable();
