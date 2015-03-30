@@ -80,6 +80,12 @@ public interface HttpClient extends ClientSSLSupport<HttpClient>, TCPSupport<Htt
   int getMaxWaiterQueueSize();
 
   /**
+   * Returns the maximum number of waiting requests
+   */
+
+  int getCurrentWaiterCount();
+
+  /**
    * Set the maximum outstanding request size for every connection<p>
    * The connection will keep up to {@code connectionMaxOutstandingRequestCount} outstanding requests<p>
    * @return A reference to this, so multiple invocations can be chained together.
@@ -90,7 +96,7 @@ public interface HttpClient extends ClientSSLSupport<HttpClient>, TCPSupport<Htt
    * Returns the maximum number of outstanding requests for each connection
    */
   int getConnectionMaxOutstandingRequestCount();
-  
+
   /**
    * If {@code keepAlive} is {@code true} then the connection will be returned to the pool after the request has ended (if
    * {@code pipelining} is {@code true}), or after both request and response have ended (if {@code pipelining} is

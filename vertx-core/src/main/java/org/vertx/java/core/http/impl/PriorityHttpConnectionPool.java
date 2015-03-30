@@ -78,6 +78,11 @@ public abstract class PriorityHttpConnectionPool implements HttpPool {
     return connectionCount;
   }
 
+  @Override
+  public int getCurrentWaiterCount() {
+    return waiters.size();
+  }
+
   public synchronized void report() {
     log.trace("available: " + available.size() + " connection count: " + connectionCount + " waiters: " + waiters.size());
   }
@@ -103,7 +108,7 @@ public abstract class PriorityHttpConnectionPool implements HttpPool {
         } else {
           // There are too many requests in waiter queue. Return exception to avoid OOM.
           connectExceptionHandler.handle(new ConnectionPoolTooBusyException("Too many requests to be handled. The request will be cancelled to avoid OOM."));
-        } 
+        }
       }
     }
     // We do this outside the sync block to minimise the critical section

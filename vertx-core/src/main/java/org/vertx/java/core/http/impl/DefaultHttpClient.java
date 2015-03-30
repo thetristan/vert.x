@@ -135,6 +135,11 @@ public class DefaultHttpClient implements HttpClient {
   }
 
   @Override
+  public int getCurrentWaiterCount() {
+    return pool.getCurrentWaiterCount();
+  }
+
+  @Override
   public DefaultHttpClient setKeepAlive(boolean keepAlive) {
     checkClosed();
     checkConfigurable();

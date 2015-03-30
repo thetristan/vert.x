@@ -33,6 +33,8 @@ public interface HttpPool {
 
   int getCurrentConnectionCount();
 
+  int getCurrentWaiterCount();
+
   void close();
 
   void getConnection(Handler<ClientConnection> handler, Handler<Throwable> connectionExceptionHandler, DefaultContext context);
